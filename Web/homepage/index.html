@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <title>My Webpage</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <div class="header_container _container">
+                    <a href="index.html" class="home_page">
+                        HOME
+                    </a>
+                    <nav class="header_menu menu">
+                        <ul class="menu_list">
+                            <li class="menu_item">
+                                <a href="mercury.html" class="menu_link"><div class="menu_image"><img src="materials/mercury.png" alt="There should be Mercury"><p style="text-align: center">Mercury</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="venus.html" class="menu_link"><div class="menu_image"><img src="materials/venus.png" alt="There should be Venus"><p style="text-align: center">Venus</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="earth.html" class="menu_link"><div class="menu_image"><img src="materials/earth.png" alt="There should be Earth"><p style="text-align: center">Earth</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="mars.html" class="menu_link"><div class="menu_image"><img src="materials/mars.png" alt="There should be Mars"><p style="text-align: center">Mars</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="jupiter.html" class="menu_link"><div class="menu_image"><img src="materials/jupiter.png" alt="There should be Jupiter"><p style="text-align: center">Jupiter</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="saturn.html" class="menu_link"><div class="menu_image"><img src="materials/saturn.png" alt="There should be Saturn"><p style="text-align: center">Saturn</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="uranus.html" class="menu_link"><div class="menu_image"><img src="materials/uranus.png" alt="There should be Uranus"><p style="text-align: center">Uranus</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="neptune.html" class="menu_link"><div class="menu_image"><img src="materials/neptune.png" alt="There should be Neptune"><p style="text-align: center">Neptune</p></div></a>
+                            </li>
+                            <li class="menu_item">
+                                <a href="pluto.html" class="menu_link"><div class="menu_image"><img src="materials/pluto.png" alt="There should be Pluto"><p style="text-align: center">Pluto</p></div></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <main class="page">
+                <div class="page_main-block main-block">
+                    <div class="main-block_container _container">
+                        <div class="main-block_body">
+                            <h1 class="main-block_title">Welcome to my WebPage</h1>
+                            <div class="main-block_text">
+                                This is my attempt to implement some fresh knowlage in HTML/CSS/JS
+                                <br>
+                                The site was created as part of Problem set 8 from CS50 course
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-warning" onclick="mute()">Mute</button>
+                                <button type="button" class="btn btn-outline-warning" onclick="unmute()">Unmute</button>
+                            </div>
+                            <br>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-warning" onclick="play()">Play</button>
+                                <button type="button" class="btn btn-outline-warning" onclick="pause()">Pause</button>
+                            </div>
+                            <br>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-warning" onclick="toStart()">To start</button>
+                                <button type="button" class="btn btn-outline-warning" onclick="toEnd()">To end</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-block_video _ibg">
+                        <video id="myVideo" autoplay>
+                            <source src="materials/solar_system.mp4" type="video/mp4" alt="cover">
+                        </video>
+                    </div>
+                    <div class="main-block_audio">
+                        <audio id="myAudio" autoplay muted paused>
+                            <source src="materials/audio.mp3" type="audio/mp3">
+                        </audio>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company</th>
+                <th>Shares</th>
+                <th>Unit price</th>
+                <th>Total price</th>
+                <th>Total cash</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in index_data %}
+            {% if row["shares"] != 0 %}
+            <tr>
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["company"] }}</td>
+                <td>{{ row["shares"] }}</td>
+                <td>{{ row["price"] | usd }}</td>
+                <td>{{ (row["shares"] * row["price"]) | usd }}</td>
+                <td>
+                    <td class="action_td">
+                        <form action="/" method="post">
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Shares" aria-label="Shares" aria-describedby="basic-addon2" name="modify_shares">
+                                <input type="hidden" class="form-control" placeholder="Shares" aria-label="Shares" aria-describedby="basic-addon2" name="symbol" value={{ row["symbol"] }}>
+                                <div class="btn-group">
+                                <button class="btn btn-outline-primary" type="submit" name="action" value="buy">Buy</button>
+                                <button class="btn btn-outline-primary" type="submit" name="action" value="sell">Sell</button>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash | usd}}</td>
+                <td class="action_td">
+                    <form action="/" method="post">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Add funds" aria-label="Add funds" aria-describedby="basic-addon2" name="add_funds" step=".01">
+                            <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit" name="action" value="funds">Add funds</button>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

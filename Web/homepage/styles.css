@@ -1,0 +1,207 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 24px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    color: #b8cff5;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+/*------------------------------------------------------------*/
+.wrapper{
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+/*------------------------------------------------------------*/
+._container{
+    max-width: 1600px;
+    padding: 0px 20px;
+    margin: 0px auto;
+    box-sizing: content-box;
+}
+._ibg{
+    position: relative;
+}
+._ibg video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+
+/*-----header-----------------------------------------------*/
+.header{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+}
+.header_container{
+    display: flex;
+    min-height: 100px;
+    align-items: center;
+}
+.header_menu{
+    margin: 0px 0px 0px 100px;
+}
+.home_page{
+    font-size: 30px;
+    font-weight: 700;
+    color: inherit;
+}
+.menu_list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.menu_item{
+    margin: 30px 0px 0px 30px;
+}
+.menu_link{
+    font-size: 16px;
+    color: #737373;
+    font-weight: 600;
+    line-height: 160%
+}
+.menu_image{
+    text-align: justify;
+    display: block;
+}
+.menu_image img{
+    width: 100px;
+    height: 30px;
+}
+/*-----main-----------------------------------------------*/
+.page{
+    flex: 1 1 auto;
+    position: relative;
+}
+.page_background img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+.main-block_body{
+    padding: 180px 0px 190px 0px;
+    position: relative;
+    z-index: 2;
+}
+.main-block_body > *{
+    margin: 0px 0px 40px 0px;
+}
+.main-block_title {
+    font-size: 48px;
+    line-height: 160%
+}
+.main-block_video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+/*------------planets---------------------*/
+
+.content_body{
+    padding: 200px 0px 200px 0px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+}
+.content_column{
+    flex: 0 1 50%;
+    padding: 0px 15px;
+    position: relative;
+}
+.content_item{
+    background-color: transparent;
+    padding: 20px;
+}
+.item-content_title{
+    font-weight: 700;
+    font-size: 35px;
+}
+.item-text{
+    font-weight: 500;
+    font-size: 24px;
+}
+.item-content_video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/*-----footer-----------------------------------------------*/
+
+.footer_content{
+    background: #17213c;
+    padding: 50px 0;
+}
+.footer_body{
+    display: flex;
+}
+.footer_column{
+    flex: 0 1 50%;
+}
+.footer_label{
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0px 0px 20px 0px;
+}
+
+.menu-footer_items{
+    display: flex;
+    font-size: 20px;
+    vertical-align: baseline;
+}
+.menu-footer_items p{
+    text-align: center;
+    color: #fff;
+}
+.footer_menu-image img{
+    width: 60px;
+    height: 30px;
+}
