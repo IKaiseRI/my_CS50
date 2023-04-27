@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Intex
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div class="cards_row">
+            <div class="cards_column">
+                <div class="cards_item">
+                    <a href="/my_products">
+                        <div class="cards_image">
+                            <img src="static/my_products.jpg" class="the_image">
+                                <div class="over_image">
+                                    <div class="over_title">My products</div>
+                                </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="cards_column">
+                <div class="cards_item">
+                    <a href="/my_menues">
+                        <div class="cards_image">
+                            <img src="static/my_receipts.jpg" class="the_image">
+                            <div class="over_image">
+                                <div class="over_title">My Menues</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

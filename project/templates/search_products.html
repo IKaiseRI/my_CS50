@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search products
+{% endblock %}
+
+{% block main %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<form action="/search_products" method="post">
+    <div class="mb-3 container_align">
+        <div>
+            <input  autocomplete="off" autofocus class="form-control search_width" name="search" placeholder="Product search..." type="search">
+        </div>
+            <div class="align btn-group">
+                <input  autocomplete="off" class="form-control input_width btn btn-light" name="quantity" placeholder="Insert quantity" type="number">
+                <input  autocomplete="off" class="form-control input_width btn btn-light" name="weight" placeholder="Insert weight" type="number" step="0.001">
+                <input  autocomplete="off" class="form-control input_width btn btn-light" name="days" placeholder="Insert days left" type="number">
+                <button class="btn btn-dark" type="submit" name="action" value="add">Add</button>
+            </div>
+            <div class="align btn-group">
+                <button class="btn button_width btn-dark" type="submit" name="action" value="delete">Delete</button>
+                <button class="btn button_width btn-dark" type="submit" name="action" value="edit">Edit</button>
+            </div>
+    </div>
+    <script>
+
+        let input = document.querySelector('input');
+        input.addEventListener('input', async function() {
+            let response = await fetch('/products?q=' + input.value);
+            let ingredients = await response.text();
+            document.querySelector('tbody').innerHTML = ingredients;
+        });
+
+    </script>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Carbohydrates</th>
+                <th scope="col">Proteins</th>
+                <th scope="col">Fats</th>
+                <th scope="col">Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for row in ingredients %}
+                <tr class="evidence">
+                    <td class="radio_width"><input type="radio" name="check" id="checked" value="{{ row["name"] }}"></td>
+                    <td class="name_width">{{ row["name"] }}</td>
+                    <td>{{ row["carbohydrates"] }}</td>
+                    <td>{{ row["proteins"] }}</td>
+                    <td>{{ row["fats"] }}</td>
+                    <td>{{ row["calories"] }}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

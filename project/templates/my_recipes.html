@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My recipes
+{% endblock %}
+
+{% block main %}
+    <form action="/my_recipes" method="post">
+        <div class="mb-3 container_align">
+            <div class="align btn-group">
+                <input  autocomplete="off" class="form-control search_width btn btn-light" name="menue" placeholder="Name" type="text">
+                <button class="btn input_width btn-dark" type="submit" name="action" value="add">Add a menue</button>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% for row in dishes %}
+            <div class="items_item">
+                <div class="items_image">
+                    <img src="/static/{{ row[0].name }}.jpg" alt="">
+                </div>
+                <div class="items_body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="name_width">{{ row[0].name }}</th>
+                                <th class="name_width"><input type="checkbox" name="check" value="{{ row[0].id }}">Check for menue</th>
+                                <th class="name_width"><button class="btn input_width btn-dark" type="submit" name="action" value="prepare">Prepare</button></th>
+                            </tr>
+                            <tr>
+                                <th class="name_width">Ingredients:</th>
+                                <th class="name_width">Requested</th>
+                                <th class="name_width">In stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for unit in row %}
+                            {% if unit.ingredient != NULL %}
+                                <tr>
+                                    <td>{{ unit.ingredient }}</td>
+                                    <td>{{ unit.quantity }} pieces / {{ unit.weight }} g</td>
+                                    {% if unit.qstock == NULL or unit.wstock == NULL %}
+                                    <td>no stock</td>
+                                    {% else %}
+                                    <td>{{ unit.qstock }} pieces / {{ unit.wstock }} g</td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="items_text"></div>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+{% endblock %}

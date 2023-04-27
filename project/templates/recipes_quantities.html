@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Set quantities
+{% endblock %}
+
+{% block main %}
+<form action="/recipes_quantities" method="post" enctype="multipart/form-data">
+    <div class="mb-3 container_align">
+        <h1 class="align"><input  name="dish" type="hidden" value="{{ dish_name }}">{{ dish_name }}</h1>
+        <button class="btn align btn-dark" type="submit" name="action" value="confirm">Confirm</button>
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for row in ingredients %}
+                <tr>
+                    <td><input  name="name" type="hidden" value="{{ row["name"] }}"><input  name="id" type="hidden" value="{{ dish_id }}">{{ row["name"] }}</td>
+                    <td><input  autocomplete="off" class="input_width btn btn-light" name="quantity" value="1" placeholder="Insert quantity" type="number"></td>
+                    <td><input  autocomplete="off" class="input_width btn btn-light" name="weight" value="1" placeholder="Insert weight" type="number"></td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

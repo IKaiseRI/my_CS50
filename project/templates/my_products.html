@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My products
+{% endblock %}
+
+{% block main %}
+<form action="/my_products" method="post">
+    <div class="mb-3 container_align">
+            <div>
+                <input  autocomplete="off" autofocus class="form-control search_width" name="search" placeholder="Product search..." type="search">
+            </div>
+            <div class="align btn-group">
+                <button class="btn button_width btn-dark" type="submit" name="action" value="delete">Delete</button>
+                <button class="btn button_width btn-dark" type="submit" name="action" value="edit">Edit</button>
+            </div>
+    </div>
+    <script>
+
+            let input = document.querySelector('input');
+            input.addEventListener('input', async function() {
+                let response = await fetch('/own_products?q=' + input.value);
+                let ingredients = await response.text();
+                document.querySelector('tbody').innerHTML = ingredients;
+            });
+
+    </script>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Expiration date</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in ingredients %}
+            <tr class="evidence">
+                <td class="radio_width"><input type="radio" name="check" id="checked" value="{{ row["name"] }}"></td>
+                <td class="name_width">{{ row["name"] }}</td>
+                <td>{{ row["expire"] }}</td>
+                <td>{{ row["quantity"] }}</td>
+                <td>{{ row["weight"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

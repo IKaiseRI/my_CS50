@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add recipes
+{% endblock %}
+
+{% block main %}
+<form action="/add_recipes" method="post">
+    <div class="mb-3 container_align">
+        <div>
+            <input  autocomplete="off" autofocus class="form-control search_width" name="search" placeholder="Product search..." type="search">
+        </div>
+            <div class="align btn-group">
+                <input  autocomplete="off" class="form-control search_width btn btn-light" name="recipe" placeholder="Dish name" type="text">
+                <button class="btn input_width btn-dark" type="submit" name="action" value="add">Add</button>
+            </div>
+    </div>
+    <script>
+
+        let input = document.querySelector('input');
+        input.addEventListener('input', async function() {
+            let response = await fetch('/own_products?q=' + input.value);
+            let ingredients = await response.text();
+            document.querySelector('tbody').innerHTML = ingredients;
+        });
+
+    </script>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Carbohydrates</th>
+                <th scope="col">Proteins</th>
+                <th scope="col">Fats</th>
+                <th scope="col">Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for row in ingredients %}
+                <tr class="evidence">
+                    <td class="radio_width"><input type="checkbox" name="check" value="{{ row["id"] }}"></td>
+                    <td class="name_width">{{ row["name"] }}</td>
+                    <td>{{ row["carbohydrates"] }}</td>
+                    <td>{{ row["proteins"] }}</td>
+                    <td>{{ row["fats"] }}</td>
+                    <td>{{ row["calories"] }}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

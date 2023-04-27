@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My menues
+{% endblock %}
+
+{% block main %}
+    <form action="/my_menues" method="post">
+        <div class="mb-3 container_align">
+            <div class="align">
+                <button class="btn input_width btn-dark nav-item" type="submit" name="action">
+                    <a style="text-decoration: none; color: #f2f2f2;" href="/my_recipes">My recipes</a>
+                </button>
+            </div>
+        </div>
+        <div class="cards">
+            {% for row in menues %}
+            <hr>
+            <div class="cards_title">
+                <h2>{{ row[0].Menu }}</h2>
+            </div>
+            <div class="cards_row">
+                {% for dishes in row %}
+                    {% if dishes.name != NULL %}
+                    <div class="cards_column2">
+                        <div class="cards_item2 border border-secondary rounded-3">
+                            <div class="cards_image2 rounded-3">
+                                <img src="/static/{{ dishes.name }}.jpg" alt="">
+                            </div>
+                            <div>
+                                <h4>{{ dishes.name }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </form>
+{% endblock %}

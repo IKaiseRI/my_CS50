@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit product
+{% endblock %}
+
+{% block main %}
+    <form action="/edit_product" method="post">
+        {% for items in db %}
+                <div class="mb-3">
+                    <span>Add the name of the product</span>
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="name" name="name"  type="text" value="{{ items["name"] }}">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="name" name="modify_name"  type="hidden" value="{{ items["name"] }}">
+                </div>
+                <div class="mb-3">
+                    <span>Quantity of carbohydrates</span>
+                    <input class="form-control mx-auto w-auto" name="carbohydrates"  type="number" step="0.01" value="{{ items["carbohydrates"] }}">
+                </div>
+                <div class="mb-3">
+                    <span>Quantity of proteins</span>
+                    <input class="form-control mx-auto w-auto" name="proteins"  type="number" step="0.01" value="{{ items["proteins"] }}">
+                </div>
+                <div class="mb-3">
+                    <span>Quantity of fats</span>
+                    <input class="form-control mx-auto w-auto" name="fats"  type="number" step="0.01" value="{{ items["fats"] }}">
+                </div>
+                <div class="mb-3">
+                    <span>Quantity of calories</span>
+                    <input class="form-control mx-auto w-auto" name="calories"  type="number" step="0.01" value="{{ items["calories"] }}">
+                </div>
+                <button class="btn btn-dark" type="submit">Edit product</button>
+            {% endfor %}
+    </form>
+{% endblock %}

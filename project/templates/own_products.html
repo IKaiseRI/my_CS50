@@ -1,0 +1,9 @@
+{% for row in ingredients %}
+<tr class="evidence">
+    <td class="radio_width"><input type="radio" name="check" id="checked" value="{{ row["name"] }}"></td>
+    <td class="name_width">{{ row["name"] }}</td>
+    <td>{{ row["expire"] }}</td>
+    <td>{{ row["quantity"] }}</td>
+    <td>{{ row["weight"] }}</td>
+</tr>
+{% endfor %}
