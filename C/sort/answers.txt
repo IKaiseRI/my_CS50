@@ -1,0 +1,19 @@
+sort1 uses: Bubble Sort
+
+How do you know?: It is the fastest when sorting "sorted" files
+
+sort2 uses: Merge Sort
+
+How do you know?: It is the fastest in general
+
+sort3 uses: Selection Sort
+
+How do you know?: It is the slowest in general
+
+
+                random                      revers                      sorted
+
+        5000    10000   50000
+sort1   0.109   0.390   8.868       0.082   0.302   6.879       0.057   0.135   1.781
+sort2   0.084   0.117   1.255       0.046   0.107   1.648       0.084   0.101   2.430
+sort3   0.066   0.186   3.711       0.054   0.199   4.302       0.078   0.209   4.226
